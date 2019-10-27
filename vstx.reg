@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.vstx]
+@="VisioViewer.Viewer"
+"Content Type"="application/vnd.ms-visio.viewer"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.vstx\shellex]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.vstx\shellex\{8895b1c6-b41f-4c1c-a562-0d564250836f}]
+@="{21E17C2F-AD3A-4b89-841F-09CFE02D16B7}"
+

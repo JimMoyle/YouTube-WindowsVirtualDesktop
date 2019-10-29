@@ -1,3 +1,5 @@
+Import-Module 'D:\PoSHCode\GitHub\FSLogix.Powershell.Rules\FSLogix.PowerShell.Rules\FSLogix.PowerShell.Rules.psd1' -Force
+
 $Path = 'HKLM:\SOFTWARE\Classes\.vsdx'
 $defaultKey = '(default)'
 $typeKey = 'Content Type'

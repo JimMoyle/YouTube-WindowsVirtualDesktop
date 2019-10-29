@@ -32,6 +32,8 @@ function Add-FslFtaInfo {
 
 }
 
+Import-Module 'D:\PoSHCode\GitHub\FSLogix.Powershell.Rules\FSLogix.PowerShell.Rules\FSLogix.PowerShell.Rules.psd1' -Force
+
 $searchText = 'txtfile'
 $outPath = 'C:\JimM\FTA.fxr'
 

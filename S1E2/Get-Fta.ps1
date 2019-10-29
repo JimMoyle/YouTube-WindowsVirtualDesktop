@@ -1,7 +1,12 @@
 function Add-FslFtaInfo {
     [CmdletBinding()]
     param (
-        $extension
+        [Parameter(
+            ValuefromPipeline = $true
+        )]
+        $extension,
+        
+        $outPath
     )
    
     process {
@@ -15,7 +20,7 @@ function Add-FslFtaInfo {
         $r = Get-ItemProperty -Path $Path
 
         $paramFslRule = @{
-            Path         = 'C:\JimM\FTA.fxr'
+            Path         = $outPath
             RegValueType = 'String'
         }
 
@@ -27,11 +32,12 @@ function Add-FslFtaInfo {
 
 }
 
-$searchText = 'VisioViewer.Viewer'
+$searchText = 'txtfile'
+$outPath = 'C:\JimM\FTA.fxr'
 
 $items = Get-ChildItem -Path HKLM:\SOFTWARE\Classes\ | Where-Object PSChildName -like '.*'
 
 foreach ($item in $items) {
-    $extension = Get-ItemProperty -path $item.pspath | where-Object '(Default)' -eq $searchText | Select-Object -ExpandProperty PSChildname
-    Add-FslFtaInfo -extension $extension
+    $extension = Get-ItemProperty -path $item.pspath | where-Object '(Default)' -eq $searchText | Select-Object -ExpandProperty PSChildname | Add-FslFtaInfo -outPath $outPath
+    
 }

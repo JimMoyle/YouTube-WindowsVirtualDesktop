@@ -39,5 +39,8 @@ $outPath = 'C:\JimM\FTA.fxr'
 $items = Get-ChildItem -Path HKLM:\SOFTWARE\Classes\ | Where-Object PSChildName -Like '.*'
 
 foreach ($item in $items) {
-    $extension = Get-ItemProperty -path $item.pspath | where-Object '(Default)' -Match $searchText | Select-Object -ExpandProperty PSChildname | Add-FslFtaInfo -outPath $outPath
+    $extension = Get-ItemProperty -path $item.pspath |
+        where-Object '(Default)' -Match $searchText |
+        Select-Object -ExpandProperty PSChildname |
+        Add-FslFtaInfo -outPath $outPath
 }

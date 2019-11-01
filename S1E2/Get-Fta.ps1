@@ -25,19 +25,19 @@ function Add-FslFtaInfo {
         }
 
         Add-FslRule @paramFslRule -ValueData $r.$defaultKey -FullName (Join-Path $fslPath $defaultKey)
-
         Add-FslRule @paramFslRule -ValueData $r.$typeKey -FullName (Join-Path $fslPath $typeKey)
         
     }
 
 }
 
-$searchText = 'txtfile'
+Import-Module 'C:\PoShCode\FSLogix.Powershell.Rules\FSLogix.PowerShell.Rules\FSLogix.PowerShell.Rules.psd1'
+
+$searchText = 'VisioViewer.Viewer'
 $outPath = 'C:\JimM\FTA.fxr'
 
 $items = Get-ChildItem -Path HKLM:\SOFTWARE\Classes\ | Where-Object PSChildName -like '.*'
 
 foreach ($item in $items) {
-    $extension = Get-ItemProperty -path $item.pspath | where-Object '(Default)' -eq $searchText | Select-Object -ExpandProperty PSChildname | Add-FslFtaInfo -outPath $outPath
-    
+    Get-ItemProperty -path $item.pspath | where-Object '(Default)' -eq $searchText | Select-Object -ExpandProperty PSChildname | Add-FslFtaInfo -outPath $outPath
 }
